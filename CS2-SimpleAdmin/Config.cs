@@ -225,6 +225,9 @@ public class CS2_SimpleAdminConfig : BasePluginConfig
 {
     [JsonPropertyName("ConfigVersion")] public override int Version { get; set; } = 22;
 
+    [JsonPropertyName("SQLite")]
+    public bool SQLite { get; set; } = true;
+
     [JsonPropertyName("DatabaseHost")]
     public string DatabaseHost { get; set; } = "";
 

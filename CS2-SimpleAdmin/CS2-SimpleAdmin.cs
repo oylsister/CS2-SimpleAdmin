@@ -72,23 +72,35 @@ public partial class CS2_SimpleAdmin : BasePlugin, IPluginConfig<CS2_SimpleAdmin
         {
             throw new Exception("[CS2-SimpleAdmin] You need to setup Database credentials in config!");
         }
-        
-        MySqlConnectionStringBuilder builder = new()
-        {
-            Server = config.DatabaseHost,
-            Database = config.DatabaseName,
-            UserID = config.DatabaseUser,
-            Password = config.DatabasePassword,
-            Port = (uint)config.DatabasePort,
-            Pooling = true,
-            MinimumPoolSize = 0,
-            MaximumPoolSize = 640,
-        };
 
-        DbConnectionString = builder.ConnectionString;
+        MySqlConnectionStringBuilder builder = null!;
+
+        var sqlite = config.SQLite;
+
+        if (!sqlite)
+        {
+            builder = new()
+            {
+                Server = config.DatabaseHost,
+                Database = config.DatabaseName,
+                UserID = config.DatabaseUser,
+                Password = config.DatabasePassword,
+                Port = (uint)config.DatabasePort,
+                Pooling = true,
+                MinimumPoolSize = 0,
+                MaximumPoolSize = 640,
+            };
+
+            DbConnectionString = builder.ConnectionString;
+        }
+        else
+        {
+            DbConnectionString = $"Data Source={Path.Join(ModuleDirectory, "CS2-SimpleAdmin.db")}";
+        }
+
         Database = new Database.Database(DbConnectionString);
 
-        if (!Database.CheckDatabaseConnection())
+        if (!Database.CheckDatabaseConnection(sqlite))
         {
             Logger.LogError("Unable connect to database!");
             Unload(false);
