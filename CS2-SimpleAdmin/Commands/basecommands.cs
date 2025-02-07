@@ -8,6 +8,7 @@ using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CS2_SimpleAdmin.Managers;
 using CS2_SimpleAdmin.Menus;
 using CS2_SimpleAdminApi;
@@ -1070,7 +1071,7 @@ public partial class CS2_SimpleAdmin
         {
             return;
         }
-        
+
         gameRules.TerminateRound(5f, RoundEndReason.RoundDraw);
 
         //Server.ExecuteCommand("mp_restartgame 2");
