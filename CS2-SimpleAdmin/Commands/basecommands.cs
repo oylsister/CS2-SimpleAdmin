@@ -1062,7 +1062,17 @@ public partial class CS2_SimpleAdmin
 
         // TODO: Localize
         var name = admin == null ? _localizer?["sa_console"] ?? "Console" : admin.PlayerName;
-        Server.PrintToChatAll($"[SA] {name}: Restarting game...");
-        Server.ExecuteCommand("mp_restartgame 2");
+        Server.PrintToChatAll($"[SA] {name}: Restarting Round");
+        
+        var gameRules = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").First().GameRules;
+
+        if(gameRules == null)
+        {
+            return;
+        }
+        
+        gameRules.TerminateRound(5f, RoundEndReason.RoundDraw);
+
+        //Server.ExecuteCommand("mp_restartgame 2");
     }
 }
