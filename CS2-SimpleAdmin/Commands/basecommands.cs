@@ -430,6 +430,7 @@ public partial class CS2_SimpleAdmin
     [RequiresPermissions("@css/kick")]
     public void OnHideCommand(CCSPlayerController? caller, CommandInfo command)
     {
+        /*
         if (caller == null) return;
 
         Helper.LogCommand(caller, command);
@@ -452,6 +453,7 @@ public partial class CS2_SimpleAdmin
             caller.PrintToChat($"You are hidden now!");
             AddTimer(2.0f, () => { Server.NextFrame(() => Server.ExecuteCommand("sv_disable_teamselect_menu 0")); }, CounterStrikeSharp.API.Modules.Timers.TimerFlags.STOP_ON_MAPCHANGE);
         }
+        */
     }
 
     [CommandHelper(whoCanExecute: CommandUsage.CLIENT_ONLY)]

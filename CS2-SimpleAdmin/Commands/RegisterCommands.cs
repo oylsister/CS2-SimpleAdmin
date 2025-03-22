@@ -34,7 +34,7 @@ public static class RegisterCommands
         new CommandMapping("css_addgroup", CS2_SimpleAdmin.Instance.OnAddGroup),
         new CommandMapping("css_delgroup", CS2_SimpleAdmin.Instance.OnDelGroupCommand),
         new CommandMapping("css_reloadadmins", CS2_SimpleAdmin.Instance.OnRelAdminCommand),
-        new CommandMapping("css_hide", CS2_SimpleAdmin.Instance.OnHideCommand),
+        new CommandMapping("css_hidebullshit_fuckingcunt", CS2_SimpleAdmin.Instance.OnHideCommand),
         new CommandMapping("css_hidecomms", CS2_SimpleAdmin.Instance.OnHideCommsCommand),
         new CommandMapping("css_who", CS2_SimpleAdmin.Instance.OnWhoCommand),
         new CommandMapping("css_disconnected", CS2_SimpleAdmin.Instance.OnDisconnectedCommand),
